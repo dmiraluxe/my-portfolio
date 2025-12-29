@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divya Mishra | Multidisciplinary Professional</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <canvas id="bg"></canvas>
+
+    <main>
+        <header>
+            <h1>DIVYA MISHRA</h1>
+            <p>Technology • Finance • Strategy [cite: 6]</p>
+        </header>
+
+        <section id="about">
+            <h2>Professional Summary</h2>
+            <p>US-based remote operations aur enterprise-grade technology systems mein hands-on experience[cite: 8]. Leadership mindset aur analytical thinking ke saath kaam karne mein mahir[cite: 10].</p>
+        </section>
+
+        <section id="certificates">
+            <h2>Verified Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-card" onclick="zoomCert('jpmorgan')">
+                    <h3>JPMorgan Chase</h3>
+                    <p>Software Engineering [cite: 155]</p>
+                </div>
+                <div class="cert-card" onclick="zoomCert('bofa')">
+                    <h3>Bank of America</h3>
+                    <p>Investment Banking [cite: 85]</p>
+                </div>
+                <div class="cert-card" onclick="zoomCert('aws')">
+                    <h3>AWS</h3>
+                    <p>Solutions Architecture [cite: 124]</p>
+                </div>
+                <div class="cert-card" onclick="zoomCert('google')">
+                    <h3>Google</h3>
+                    <p>Data Foundations [cite: 105]</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="cert-viewer">Yahan aapka certificate image/PDF load hoga</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
