@@ -1,78 +1,242 @@
+/* --- GLOBAL RESET & THEME --- */
 :root {
-  --primary: #00f2fe;
-  --secondary: #4facfe;
-  --bg: #0a0a0c;
-  --glass: rgba(255, 255, 255, 0.03);
+    --bg-dark: #050507;
+    --accent-cyan: #00f2fe;
+    --accent-blue: #4facfe;
+    --text-main: #e0e0e0;
+    --text-dim: #a0a0a0;
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --premium-font: 'Inter', sans-serif;
+    --display-font: 'Playfair Display', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg);
-  color: white;
-  overflow-x: hidden;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: var(--premium-font);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
+/* --- 3D CANVAS BACKGROUND --- */
 #bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    filter: brightness(0.6);
 }
 
-main {
-  position: relative;
-  z-index: 1;
-  padding: 5rem 10%;
+/* --- LAYOUT --- */
+.master-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
 }
 
-header {
-  height: 80vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+/* --- HERO SECTION --- */
+.full-screen-center {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
-h1 {
-  font-size: 5rem;
-  font-weight: 800;
-  margin: 0;
-  background: linear-gradient(to right, #fff, #4facfe);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: -2px;
+.prefix {
+    font-family: 'Space Mono', monospace;
+    color: var(--accent-cyan);
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
 }
 
-.glass-card {
-  background: var(--glass);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  padding: 2rem;
-  margin: 2rem 0;
-  transition: all 0.4s ease;
+.glitch-text {
+    font-size: clamp(3rem, 10vw, 6rem);
+    font-weight: 900;
+    font-family: var(--display-font);
+    background: linear-gradient(to right, #fff 20%, var(--accent-blue) 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 10px 0;
+    letter-spacing: -2px;
 }
 
-.glass-card:hover {
-  border-color: var(--primary);
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+.hero-sub {
+    font-size: 1.2rem;
+    color: var(--text-dim);
 }
 
-.cert-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+.hero-sub span {
+    color: #fff;
+    font-weight: 600;
 }
 
-.btn-view {
-  background: linear-gradient(45deg, var(--secondary), var(--primary));
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 15px;
+/* --- GLASSMORPHISM SECTIONS --- */
+.glass-section {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    padding: 60px;
+    margin: 80px 0;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.glass-section:hover {
+    border-color: rgba(0, 242, 254, 0.4);
+    transform: translateY(-5px);
+}
+
+.section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+/* --- SKILLS MATRIX --- */
+.skills-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.skill-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: var(--accent-blue);
+}
+
+.skill-card ul {
+    list-style: none;
+}
+
+.skill-card li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: var(--text-dim);
+}
+
+.skill-card li strong {
+    color: #fff;
+}
+
+/* --- CERTIFICATE SHOWCASE --- */
+.cert-block {
+    border-left: 2px solid var(--glass-border);
+    padding-left: 30px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.cert-block:hover {
+    border-left-color: var(--accent-cyan);
+}
+
+.cert-tag {
+    font-weight: 800;
+    color: #fff;
+    font-size: 1.1rem;
+    margin: 5px 0;
+}
+
+.cert-desc {
+    color: var(--text-dim);
+    font-size: 0.95rem;
+    max-width: 800px;
+    margin-bottom: 15px;
+}
+
+/* --- PREMIUM BUTTONS --- */
+.view-btn {
+    background: transparent;
+    border: 1px solid var(--accent-cyan);
+    color: var(--accent-cyan);
+    padding: 10px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.view-btn:hover {
+    background: var(--accent-cyan);
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+}
+
+/* --- RESILIENCE TIMELINE --- */
+.timeline-box {
+    margin-bottom: 40px;
+    padding: 20px;
+}
+
+.timeline-box.highlight {
+    background: rgba(79, 172, 254, 0.05);
+    border-radius: 20px;
+    border-right: 4px solid var(--accent-blue);
+}
+
+.timeline-box h4 {
+    color: var(--accent-blue);
+    margin-bottom: 10px;
+}
+
+/* --- LANGUAGE TAGS --- */
+.lang-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.lang-tag {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+}
+
+/* --- FOOTER & CTA --- */
+.final-footer {
+    text-align: center;
+    padding: 100px 0;
+}
+
+.cta-btn {
+    display: inline-block;
+    margin-top: 30px;
+    background: linear-gradient(45deg, var(--accent-blue), var(--accent-cyan));
+    color: #000;
+    padding: 20px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: transform 0.3s ease;
+}
+
+.cta-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px rgba(0, 242, 254, 0.3);
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 768px) {
+    .glass-section { padding: 30px; }
+    .glitch-text { font-size: 3.5rem; }
+    .section-label { font-size: 0.7rem; }
 }
